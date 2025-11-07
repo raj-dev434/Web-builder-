@@ -265,104 +265,80 @@ const editor = grapesjs.init({
                     <div class="movie-genre" style="margin-top:10px;font-size:12px;color:#999;"></div>
                   </div>`
       },
-      { 
-      id: 'netflix-hero', 
-      label: 'Netflix Hero', 
+     { 
+      id: 'netflix-hero-mobile', 
+      label: 'Netflix Hero (Mobile)', 
       category: 'Netflix',
-      content: `<section style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://assets.nflxext.com/ffe/siteui/vlv3/9d3533b2-0e2b-40b2-95e0-ecd7979cc88b/387cfa57-7e18-4c16-8e8c-c8de233050e2/IN-en-20240311-popsignuptwoweeks-perspective_alpha_website_large.jpg'); background-size: cover; background-position: center; color: white; padding: 100px 20px; text-align: center; min-height: 80vh; display: flex; align-items: center; justify-content: center;">
-                  <div style="max-width: 800px;">
-                    <h1 style="font-size: 4rem; font-weight: 900; margin: 0 0 20px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Unlimited movies, TV shows and more</h1>
+      content: `<section class="netflix-hero-mobile" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://assets.nflxext.com/ffe/siteui/vlv3/9d3533b2-0e2b-40b2-95e0-ecd7979cc88b/387cfa57-7e18-4c16-8e8c-c8de233050e2/IN-en-20240311-popsignuptwoweeks-perspective_alpha_website_large.jpg'); background-size: cover; background-position: center; color: white; padding: 80px 20px; text-align: center; min-height: 70vh; display: flex; align-items: center; justify-content: center;">
+                  <div style="max-width: 800px;" class="mobile-padding">
+                    <h1 style="font-size: 3.5rem; font-weight: 900; margin: 0 0 20px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Unlimited movies, TV shows and more</h1>
                     <p style="font-size: 1.5rem; margin: 0 0 30px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">Watch anywhere. Cancel anytime.</p>
-                    <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-                      <button style="background: #e50914; color: white; border: none; padding: 15px 30px; font-size: 1.3rem; border-radius: 4px; cursor: pointer; font-weight: bold;">Get Started</button>
-                      <button style="background: rgba(109, 109, 110, 0.7); color: white; border: none; padding: 15px 30px; font-size: 1.3rem; border-radius: 4px; cursor: pointer; font-weight: bold;">Learn More</button>
+                    <div class="netflix-hero-buttons" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                      <button style="background: #e50914; color: white; border: none; padding: 12px 25px; font-size: 1.1rem; border-radius: 4px; cursor: pointer; font-weight: bold;" class="mobile-full-width">Get Started</button>
+                      <button style="background: rgba(109, 109, 110, 0.7); color: white; border: none; padding: 12px 25px; font-size: 1.1rem; border-radius: 4px; cursor: pointer; font-weight: bold;" class="mobile-full-width">Learn More</button>
                     </div>
                   </div>
                 </section>` 
     },
 
-    /* ========== NETFLIX MOVIE ROWS ========== */
+    /* ========== MOBILE-RESPONSIVE NETFLIX HEADER ========== */
     {
-      id: 'netflix-row',
-      label: 'Movie Row',
+      id: 'netflix-header-mobile',
+      label: 'Netflix Header (Mobile)',
       category: 'Netflix',
-      content: `<section style="padding: 40px 20px; background: #141414;">
-                  <h2 style="color: white; font-size: 1.8rem; margin: 0 0 20px 20px; font-weight: 600;">Popular on Netflix</h2>
-                  <div style="display: flex; gap: 10px; overflow-x: auto; padding: 10px 20px; scrollbar-width: none;">
-                    <div style="flex: 0 0 auto; width: 200px; transition: transform 0.3s ease;">
+      content: `<header class="netflix-header-mobile" style="background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%); padding: 15px 30px; position: absolute; top: 0; left: 0; right: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center;">
+                  <div style="display: flex; align-items: center; gap: 20px;">
+                    <img class="netflix-logo-mobile" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" style="height: 30px; filter: brightness(0) invert(1);">
+                    <nav class="netflix-nav-mobile" style="display: flex; gap: 15px;">
+                      <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem;">Home</a>
+                      <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem;">TV Shows</a>
+                    </nav>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 15px;">
+                    <button style="background: none; border: none; color: white; cursor: pointer; font-size: 1.2rem;">🔍</button>
+                    <button style="background: none; border: none; color: white; cursor: pointer; font-size: 1.2rem;">☰</button>
+                  </div>
+                </header>`
+    },
+
+    /* ========== MOBILE-RESPONSIVE MOVIE ROW ========== */
+    {
+      id: 'netflix-row-mobile',
+      label: 'Movie Row (Mobile)',
+      category: 'Netflix',
+      content: `<section class="netflix-row-mobile mobile-padding" style="padding: 30px 0; background: #141414;">
+                  <h2 class="netflix-row-title" style="color: white; font-size: 1.5rem; margin: 0 0 15px 20px; font-weight: 600;">Popular on Netflix</h2>
+                  <div style="display: flex; gap: 10px; overflow-x: auto; padding: 0 20px 10px 20px; scrollbar-width: none;">
+                    <div class="movie-card-mobile" style="flex: 0 0 auto; width: 180px; transition: transform 0.3s ease;">
                       <img src="${PLACEHOLDER_SVG}" alt="Movie" style="width: 100%; border-radius: 4px; aspect-ratio: 2/3;">
-                      <p style="color: white; margin: 10px 0 0 0; font-size: 0.9rem;">Movie Title</p>
+                      <p style="color: white; margin: 8px 0 0 0; font-size: 0.85rem; text-align: center;">Movie Title</p>
                     </div>
-                    <div style="flex: 0 0 auto; width: 200px; transition: transform 0.3s ease;">
+                    <div class="movie-card-mobile" style="flex: 0 0 auto; width: 180px; transition: transform 0.3s ease;">
                       <img src="${PLACEHOLDER_SVG}" alt="Movie" style="width: 100%; border-radius: 4px; aspect-ratio: 2/3;">
-                      <p style="color: white; margin: 10px 0 0 0; font-size: 0.9rem;">Movie Title</p>
+                      <p style="color: white; margin: 8px 0 0 0; font-size: 0.85rem; text-align: center;">Movie Title</p>
                     </div>
-                    <div style="flex: 0 0 auto; width: 200px; transition: transform 0.3s ease;">
+                    <div class="movie-card-mobile" style="flex: 0 0 auto; width: 180px; transition: transform 0.3s ease;">
                       <img src="${PLACEHOLDER_SVG}" alt="Movie" style="width: 100%; border-radius: 4px; aspect-ratio: 2/3;">
-                      <p style="color: white; margin: 10px 0 0 0; font-size: 0.9rem;">Movie Title</p>
+                      <p style="color: white; margin: 8px 0 0 0; font-size: 0.85rem; text-align: center;">Movie Title</p>
                     </div>
                   </div>
                 </section>`
     },
 
-    /* ========== NETFLIX CARDS ========== */
-    { 
-      id: 'netflix-card', 
-      label: 'Netflix Card', 
-      category: 'Netflix',
-      content: `<div class="netflix-card" style="background: #181818; border-radius: 8px; overflow: hidden; max-width: 300px; transition: transform 0.3s ease; cursor: pointer;">
-                  <div style="position: relative;">
-                    <img class="movie-poster" src="${PLACEHOLDER_SVG}" alt="Poster" style="width: 100%; aspect-ratio: 2/3;">
-                    <div style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px;">⭐ 8.5</div>
-                  </div>
-                  <div style="padding: 15px;">
-                    <div class="movie-title" style="color: white; font-weight: bold; margin: 0 0 8px 0; font-size: 1.1rem;">Movie Title</div>
-                    <div class="movie-info" style="color: #a3a3a3; font-size: 0.9rem; margin-bottom: 10px;">
-                      <span class="movie-year">2023</span> • 
-                      <span class="movie-genre">Action</span>
-                    </div>
-                    <div class="movie-description" style="color: #d2d2d2; font-size: 0.85rem; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Movie description goes here...</div>
-                    <button style="background: #e50914; color: white; border: none; padding: 8px 16px; border-radius: 4px; font-size: 0.9rem; cursor: pointer; width: 100%; margin-top: 12px;">Watch Now</button>
-                  </div>
-                </div>` 
-    },
-
-    /* ========== NETFLIX HEADER ========== */
+    /* ========== MOBILE-RESPONSIVE BILLBOARD ========== */
     {
-      id: 'netflix-header',
-      label: 'Netflix Header',
+      id: 'netflix-billboard-mobile',
+      label: 'Netflix Billboard (Mobile)',
       category: 'Netflix',
-      content: `<header style="background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%); padding: 20px 50px; position: absolute; top: 0; left: 0; right: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center;">
-                  <div style="display: flex; align-items: center; gap: 40px;">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" style="height: 30px; filter: brightness(0) invert(1);">
-                    <nav style="display: flex; gap: 20px;">
-                      <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem;">Home</a>
-                      <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem;">TV Shows</a>
-                      <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem;">Movies</a>
-                      <a href="#" style="color: white; text-decoration: none; font-size: 0.9rem;">New & Popular</a>
-                    </nav>
-                  </div>
-                  <div style="display: flex; align-items: center; gap: 20px;">
-                    <button style="background: none; border: none; color: white; cursor: pointer;">🔍</button>
-                    <button style="background: none; border: none; color: white; cursor: pointer;">👤</button>
-                  </div>
-                </header>`
-    },
-
-    /* ========== NETFLIX BILLBOARD ========== */
-    {
-      id: 'netflix-billboard',
-      label: 'Netflix Billboard',
-      category: 'Netflix',
-      content: `<section style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://image.tmdb.org/t/p/original/ggFHVNu6YYI5L9pCfOacjizRGt.jpg'); background-size: cover; background-position: center; color: white; padding: 150px 50px 80px 50px; min-height: 70vh; display: flex; align-items: flex-end;">
-                  <div style="max-width: 600px;">
-                    <h1 style="font-size: 3.5rem; font-weight: 900; margin: 0 0 20px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Stranger Things</h1>
-                    <p style="font-size: 1.2rem; margin: 0 0 25px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); line-height: 1.4;">When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl.</p>
-                    <div style="display: flex; gap: 15px;">
-                      <button style="background: white; color: black; border: none; padding: 12px 25px; font-size: 1.1rem; border-radius: 4px; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 8px;">
+      content: `<section class="netflix-billboard-mobile mobile-padding" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://image.tmdb.org/t/p/original/ggFHVNu6YYI5L9pCfOacjizRGt.jpg'); background-size: cover; background-position: center; color: white; padding: 100px 20px 50px 20px; min-height: 60vh; display: flex; align-items: flex-end;">
+                  <div style="max-width: 100%;" class="mobile-text-center">
+                    <h1 style="font-size: 2.5rem; font-weight: 900; margin: 0 0 15px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Stranger Things</h1>
+                    <p style="font-size: 1rem; margin: 0 0 20px 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); line-height: 1.4;">When a young boy vanishes, a small town uncovers a mystery involving secret experiments.</p>
+                    <div class="billboard-buttons-mobile" style="display: flex; gap: 10px; justify-content: center;">
+                      <button style="background: white; color: black; border: none; padding: 10px 20px; font-size: 1rem; border-radius: 4px; cursor: pointer; font-weight: bold;">
                         ▶️ Play
                       </button>
-                      <button style="background: rgba(109, 109, 110, 0.7); color: white; border: none; padding: 12px 25px; font-size: 1.1rem; border-radius: 4px; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 8px;">
+                      <button style="background: rgba(109, 109, 110, 0.7); color: white; border: none; padding: 10px 20px; font-size: 1rem; border-radius: 4px; cursor: pointer; font-weight: bold;">
                         ⓘ More Info
                       </button>
                     </div>
@@ -370,57 +346,57 @@ const editor = grapesjs.init({
                 </section>`
     },
 
-    /* ========== NETFLIX CATEGORY SECTIONS ========== */
+    /* ========== MOBILE-RESPONSIVE GRID LAYOUT ========== */
     {
-      id: 'netflix-trending',
-      label: 'Trending Now',
+      id: 'netflix-grid-mobile',
+      label: 'Movie Grid (Mobile)',
       category: 'Netflix',
-      content: `<section style="padding: 40px 50px; background: #141414;">
-                  <h2 style="color: white; font-size: 1.8rem; margin: 0 0 20px 0; font-weight: 600;">Trending Now</h2>
-                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+      content: `<section class="mobile-padding" style="padding: 30px 0; background: #141414;">
+                  <h2 class="mobile-text-center" style="color: white; font-size: 1.5rem; margin: 0 0 20px 0; font-weight: 600;">Trending Now</h2>
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; padding: 0 15px;">
                     <div class="netflix-card omdb-movie" data-movie-id="tt4154796" style="background: #181818; border-radius: 8px; overflow: hidden; transition: transform 0.3s ease;">
                       <img class="movie-poster" src="${PLACEHOLDER_SVG}" alt="Loading" style="width: 100%; aspect-ratio: 2/3;">
-                      <div style="padding: 15px;">
-                        <div class="movie-title" style="color: white; font-weight: bold; margin: 0 0 5px 0;">Loading...</div>
-                        <div class="movie-year" style="color: #a3a3a3; font-size: 0.9rem;">-</div>
+                      <div style="padding: 10px;">
+                        <div class="movie-title" style="color: white; font-weight: bold; margin: 0 0 5px 0; font-size: 0.9rem;">Loading...</div>
+                        <div class="movie-year" style="color: #a3a3a3; font-size: 0.8rem;">-</div>
                       </div>
                     </div>
                     <div class="netflix-card omdb-movie" data-movie-id="tt10872600" style="background: #181818; border-radius: 8px; overflow: hidden; transition: transform 0.3s ease;">
                       <img class="movie-poster" src="${PLACEHOLDER_SVG}" alt="Loading" style="width: 100%; aspect-ratio: 2/3;">
-                      <div style="padding: 15px;">
-                        <div class="movie-title" style="color: white; font-weight: bold; margin: 0 0 5px 0;">Loading...</div>
-                        <div class="movie-year" style="color: #a3a3a3; font-size: 0.9rem;">-</div>
+                      <div style="padding: 10px;">
+                        <div class="movie-title" style="color: white; font-weight: bold; margin: 0 0 5px 0; font-size: 0.9rem;">Loading...</div>
+                        <div class="movie-year" style="color: #a3a3a3; font-size: 0.8rem;">-</div>
                       </div>
                     </div>
                   </div>
                 </section>`
     },
 
-    /* ========== NETFLIX FOOTER ========== */
+    /* ========== MOBILE-RESPONSIVE FOOTER ========== */
     {
-      id: 'netflix-footer',
-      label: 'Netflix Footer',
+      id: 'netflix-footer-mobile',
+      label: 'Netflix Footer (Mobile)',
       category: 'Netflix',
-      content: `<footer style="background: #141414; color: #808080; padding: 50px; margin-top: 50px;">
+      content: `<footer class="netflix-footer-mobile" style="background: #141414; color: #808080; padding: 40px 20px; margin-top: 30px;">
                   <div style="max-width: 1000px; margin: 0 auto;">
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-bottom: 30px;">
+                    <div class="footer-grid-mobile" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin-bottom: 25px;">
                       <div>
-                        <h4 style="color: #808080; margin-bottom: 15px;">Audio & Subtitles</h4>
+                        <h4 style="color: #808080; margin-bottom: 12px; font-size: 0.9rem;">Audio & Subtitles</h4>
                         <ul style="list-style: none; padding: 0;">
-                          <li><a href="#" style="color: #808080; text-decoration: none; font-size: 0.9rem;">Audio Description</a></li>
-                          <li><a href="#" style="color: #808080; text-decoration: none; font-size: 0.9rem;">Help Center</a></li>
+                          <li><a href="#" style="color: #808080; text-decoration: none; font-size: 0.8rem;">Audio Description</a></li>
+                          <li><a href="#" style="color: #808080; text-decoration: none; font-size: 0.8rem;">Help Center</a></li>
                         </ul>
                       </div>
                       <div>
-                        <h4 style="color: #808080; margin-bottom: 15px;">Media Center</h4>
+                        <h4 style="color: #808080; margin-bottom: 12px; font-size: 0.9rem;">Media Center</h4>
                         <ul style="list-style: none; padding: 0;">
-                          <li><a href="#" style="color: #808080; text-decoration: none; font-size: 0.9rem;">Investor Relations</a></li>
-                          <li><a href="#" style="color: #808080; text-decoration: none; font-size: 0.9rem;">Jobs</a></li>
+                          <li><a href="#" style="color: #808080; text-decoration: none; font-size: 0.8rem;">Investor Relations</a></li>
+                          <li><a href="#" style="color: #808080; text-decoration: none; font-size: 0.8rem;">Jobs</a></li>
                         </ul>
                       </div>
                     </div>
-                    <div style="border-top: 1px solid #333; padding-top: 20px; text-align: center;">
-                      <p style="margin: 0; font-size: 0.9rem;">&copy; 2024 Netflix Clone. For educational purposes.</p>
+                    <div style="border-top: 1px solid #333; padding-top: 15px; text-align: center;">
+                      <p style="margin: 0; font-size: 0.8rem;">&copy; 2024 Netflix Clone. For educational purposes.</p>
                     </div>
                   </div>
                 </footer>`
