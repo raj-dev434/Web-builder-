@@ -1,0 +1,524 @@
+/* ========== CSS RESET & BASE STYLES ========== */
+* { 
+  box-sizing: border-box; 
+  transition: all .3s ease; 
+}
+
+body, html { 
+  margin: 0; 
+  height: 100%; 
+  font-family: Arial, sans-serif; 
+  background: #f5f5f5;
+}
+
+#main-wrapper {
+  position: relative;
+  height: 100vh;
+}
+
+/* ========== TOP CONTROLS BAR ========== */
+.controls-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #2c3e50;
+  color: white;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.controls-left, .controls-right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* ========== BUTTON STYLES ========== */
+.ctrl-btn {
+  padding: 8px 16px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+}
+
+.ctrl-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.ctrl-btn.export {
+  background: #27ae60;
+}
+
+.ctrl-btn.export:hover {
+  background: #219a52;
+}
+
+.ctrl-btn.preview {
+  background: #e67e22;
+}
+
+.ctrl-btn.preview:hover {
+  background: #d35400;
+}
+
+.ctrl-btn.add-movie {
+  background: #9b59b6;
+}
+
+.ctrl-btn.add-movie:hover {
+  background: #8e44ad;
+}
+
+.ctrl-btn.dark-mode {
+  background: #34495e;
+}
+
+.ctrl-btn.dark-mode:hover {
+  background: #2c3e50;
+}
+
+/* ========== GRAPESJS EDITOR CONTAINER ========== */
+#gjs {
+  margin-top: 60px; /* Space for controls bar */
+  margin-bottom: 70vh;
+  border: none;
+  height: calc(100vh - 60px) !important;
+}
+
+/* ========== COLLAPSIBLE MOVIE PANEL ========== */
+.movie-panel {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #222;
+  color: #eee;
+  z-index: 999;
+  border-top: 2px solid #444;
+  max-height: 70vh;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.movie-panel.collapsed {
+  max-height: 50px !important;
+}
+
+/* Panel Header */
+.movie-panel .panel-header {
+  padding: 15px 20px;
+  background: #333;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.movie-panel .panel-header:hover {
+  background: #3a3a3a;
+}
+
+/* Panel Body */
+.movie-panel .panel-body {
+  padding: 20px;
+  background: #1e1e1e;
+  overflow-y: auto;
+  max-height: calc(70vh - 60px);
+}
+
+.toggle-icon {
+  font-size: 14px;
+  color: #3498db;
+}
+
+/* ========== BLOCKS CONTAINER ========== */
+#blocks {
+  display: block !important;
+  min-height: 100px !important;
+  padding: 10px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Block Styling */
+#blocks .gjs-block {
+  margin: 10px 0 !important;
+  background: #333 !important;
+  border: 1px solid #555 !important;
+  color: #fff !important;
+  padding: 12px !important;
+  border-radius: 8px !important;
+  cursor: grab;
+  transition: all 0.3s ease;
+}
+
+#blocks .gjs-block:hover {
+  background: #444 !important;
+  border-color: #777 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+#blocks .gjs-block:active {
+  cursor: grabbing;
+  transform: translateY(0);
+}
+
+/* ========== MOVIE SEARCH MODAL STYLES ========== */
+.movie-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 10002;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+}
+
+.movie-modal .modal-content {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.movie-modal .modal-header {
+  padding: 20px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.movie-modal .modal-header h3 {
+  margin: 0;
+  font-size: 1.3em;
+  color: #2c3e50;
+}
+
+.movie-modal .close-modal {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.movie-modal .close-modal:hover {
+  background: #e9ecef;
+  color: #333;
+}
+
+.movie-modal .modal-body {
+  padding: 20px;
+}
+
+.movie-search-input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  transition: border-color 0.3s ease;
+}
+
+.movie-search-input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.modal-examples {
+  margin-top: 15px;
+}
+
+.modal-examples p {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.example-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.example-item {
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.example-item:hover {
+  background: #e9ecef;
+  border-color: #3498db;
+  transform: translateY(-1px);
+}
+
+.movie-modal .modal-footer {
+  padding: 15px 20px;
+  background: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.modal-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.modal-btn.cancel {
+  background: #6c757d;
+  color: white;
+}
+
+.modal-btn.cancel:hover {
+  background: #5a6268;
+}
+
+.modal-btn.confirm {
+  background: #27ae60;
+  color: white;
+}
+
+.modal-btn.confirm:hover {
+  background: #219a52;
+  transform: translateY(-1px);
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 768px) {
+  .controls-bar {
+    padding: 10px 15px;
+    flex-direction: column;
+    gap: 10px;
+    height: auto;
+  }
+  
+  .controls-left, .controls-right {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  #gjs {
+    margin-top: 100px; /* More space for stacked controls */
+  }
+  
+  .movie-panel .panel-header {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+  
+  .example-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .ctrl-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-panel {
+    max-height: 80vh;
+  }
+  
+  .movie-panel .panel-body {
+    max-height: calc(80vh - 60px);
+    padding: 15px;
+  }
+  
+  #blocks {
+    padding: 8px;
+  }
+  
+  #blocks .gjs-block {
+    margin: 8px 0 !important;
+    padding: 10px !important;
+  }
+}
+
+/* Netflix-inspired Styles */
+.netflix-card:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+/* Scrollbar styling for movie rows */
+.netflix-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* Netflix red color scheme */
+.netflix-red {
+  background: #e50914 !important;
+}
+
+.netflix-dark-bg {
+  background: #141414 !important;
+}
+
+.netflix-card-bg {
+  background: #181818 !important;
+}
+/* ========== MOBILE RESPONSIVE STYLES ========== */
+@media (max-width: 768px) {
+  /* Netflix Hero Mobile */
+  .netflix-hero-mobile h1 {
+    font-size: 2.5rem !important;
+    text-align: center;
+  }
+  
+  .netflix-hero-mobile p {
+    font-size: 1.2rem !important;
+    text-align: center;
+  }
+  
+  .netflix-hero-buttons {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  /* Netflix Header Mobile */
+  .netflix-header-mobile {
+    padding: 15px 20px !important;
+  }
+  
+  .netflix-nav-mobile {
+    display: none !important; /* Hide nav on mobile */
+  }
+  
+  .netflix-logo-mobile {
+    height: 25px !important;
+  }
+  
+  /* Movie Rows Mobile */
+  .netflix-row-mobile {
+    padding: 20px 15px !important;
+  }
+  
+  .netflix-row-title {
+    font-size: 1.4rem !important;
+    margin-left: 15px !important;
+  }
+  
+  .movie-card-mobile {
+    width: 150px !important; /* Smaller cards on mobile */
+  }
+  
+  /* Billboard Mobile */
+  .netflix-billboard-mobile {
+    padding: 120px 20px 50px 20px !important;
+    min-height: 60vh !important;
+  }
+  
+  .netflix-billboard-mobile h1 {
+    font-size: 2.2rem !important;
+  }
+  
+  .netflix-billboard-mobile p {
+    font-size: 1rem !important;
+  }
+  
+  .billboard-buttons-mobile {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  
+  /* Footer Mobile */
+  .netflix-footer-mobile {
+    padding: 30px 20px !important;
+  }
+  
+  .footer-grid-mobile {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  
+  /* General Mobile Adjustments */
+  .mobile-padding {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+  
+  .mobile-text-center {
+    text-align: center !important;
+  }
+  
+  .mobile-full-width {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small devices */
+  .netflix-hero-mobile h1 {
+    font-size: 2rem !important;
+  }
+  
+  .movie-card-mobile {
+    width: 130px !important;
+  }
+  
+  .netflix-billboard-mobile h1 {
+    font-size: 1.8rem !important;
+  }
+}
