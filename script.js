@@ -76,10 +76,93 @@ const editor =grapesjs.init({
                   </section>` 
       },
       { 
-        id: 'movie-header', 
+        id: 'Basic-header', 
         label: 'Header', 
         category: 'Basic', 
-        content: '<h1 style="text-align:center;color:#333;padding:20px;margin:0;">My Movie Site</h1>' 
+        content: '<h1 style="text-align:center;color:#333;padding:20px;margin:0;">My Site</h1>' 
+      },
+       { 
+        id: 'business-hero', 
+        label: 'Business Hero', 
+        category: 'Hero',
+        content: `<section style="background: #f8f9fa; padding: 100px 20px;">
+                  <div style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 50px;">
+                    <div style="flex: 1;">
+                      <h1 style="font-size: 3em; color: #2c3e50; margin: 0 0 20px 0; line-height: 1.2;">Grow Your Business with Our Solutions</h1>
+                      <p style="font-size: 1.2em; color: #7f8c8d; margin: 0 0 30px 0; line-height: 1.6;">We provide innovative solutions to help your business reach new heights and achieve success.</p>
+                      <button style="background: #3498db; color: white; border: none; padding: 15px 35px; font-size: 1.1em; border-radius: 5px; cursor: pointer; font-weight: 600;">Start Free Trial</button>
+                    </div>
+                    <div style="flex: 1; text-align: center;">
+                      <div style="background: #ecf0f1; padding: 60px; border-radius: 10px; display: inline-block;">
+                        <span style="font-size: 3em; color: #3498db;">📊</span>
+                      </div>
+                    </div>
+                  </div>
+                </section>` 
+    },
+    {
+        id: 'modern-navbar',
+        label: 'Modern Navbar',
+        category: 'Navigation',
+        content: `<header style="background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 0 20px;">
+                  <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 70px;">
+                    <div style="display: flex; align-items: center; gap: 40px;">
+                      <div style="font-size: 1.5em; font-weight: bold; color: #2c3e50;">Logo</div>
+                      <nav style="display: flex; gap: 30px;">
+                        <a href="#" style="color: #2c3e50; text-decoration: none; font-weight: 500;">Home</a>
+                        <a href="#" style="color: #2c3e50; text-decoration: none; font-weight: 500;">Features</a>
+                        <a href="#" style="color: #2c3e50; text-decoration: none; font-weight: 500;">Pricing</a>
+                        <a href="#" style="color: #2c3e50; text-decoration: none; font-weight: 500;">Contact</a>
+                      </nav>
+                    </div>
+                    <div>
+                      <button style="background: #3498db; color: white; border: none; padding: 10px 25px; border-radius: 5px; cursor: pointer; font-weight: 500;">Sign Up</button>
+                    </div>
+                  </div>
+                </header>`
+      },
+      {
+        id: 'features-grid',
+        label: 'Features Grid',
+        category: 'Sections',
+        content: `<section style="padding: 80px 20px; background: #f8f9fa;">
+                  <div style="max-width: 1200px; margin: 0 auto;">
+                    <h2 style="text-align: center; font-size: 2.5em; color: #2c3e50; margin: 0 0 60px 0;">Why Choose Us</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+                      <div style="text-align: center; padding: 30px;">
+                        <div style="background: #3498db; color: white; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.5em;">🚀</div>
+                        <h3 style="color: #2c3e50; margin: 0 0 15px 0;">Fast Performance</h3>
+                        <p style="color: #7f8c8d; line-height: 1.6;">Lightning fast loading times and smooth user experience.</p>
+                      </div>
+                      <div style="text-align: center; padding: 30px;">
+                        <div style="background: #2ecc71; color: white; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.5em;">🔒</div>
+                        <h3 style="color: #2c3e50; margin: 0 0 15px 0;">Secure & Safe</h3>
+                        <p style="color: #7f8c8d; line-height: 1.6;">Enterprise-grade security to protect your data.</p>
+                      </div>
+                      <div style="text-align: center; padding: 30px;">
+                        <div style="background: #e74c3c; color: white; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.5em;">💡</div>
+                        <h3 style="color: #2c3e50; margin: 0 0 15px 0;">Easy to Use</h3>
+                        <p style="color: #7f8c8d; line-height: 1.6;">Intuitive interface that anyone can master quickly.</p>
+                      </div>
+                    </div>
+                  </div>
+                </section>`
+      },
+
+      { 
+        id: 'modern-hero', 
+        label: 'Modern Hero', 
+        category: 'Hero',
+        content: `<section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 100px 20px; text-align: center;">
+                  <div style="max-width: 800px; margin: 0 auto;">
+                    <h1 style="font-size: 3.5em; margin: 0 0 20px 0; font-weight: 300;">Create Amazing Websites</h1>
+                    <p style="font-size: 1.3em; margin: 0 0 40px 0; opacity: 0.9;">Build beautiful, responsive websites with our powerful drag & drop builder</p>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                      <button style="background: #fff; color: #667eea; border: none; padding: 15px 35px; font-size: 1.1em; border-radius: 30px; cursor: pointer; font-weight: 600;">Get Started</button>
+                      <button style="background: transparent; color: white; border: 2px solid white; padding: 15px 35px; font-size: 1.1em; border-radius: 30px; cursor: pointer; font-weight: 600;">Learn More</button>
+                    </div>
+                  </div>
+                </section>` 
       },
       { 
         id: 'section-title', 
@@ -87,12 +170,190 @@ const editor =grapesjs.init({
         category: 'Basic',
         content: '<h2 style="color:#2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; margin: 30px 0 20px 0;">Featured Movies</h2>'
       },
+      /* ========== GALLERY & PORTFOLIO ========== */
+    {
+      id: 'image-gallery',
+      label: 'Image Gallery',
+      category: 'Media',
+      content: `<section style="padding: 60px 20px;">
+                  <div style="max-width: 1200px; margin: 0 auto;">
+                    <h2 style="text-align: center; font-size: 2.5em; color: #2c3e50; margin: 0 0 40px 0;">Our Gallery</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                      <div style="background: #ecf0f1; height: 200px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #7f8c8d;">Image 1</div>
+                      <div style="background: #ecf0f1; height: 200px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #7f8c8d;">Image 2</div>
+                      <div style="background: #ecf0f1; height: 200px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #7f8c8d;">Image 3</div>
+                      <div style="background: #ecf0f1; height: 200px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #7f8c8d;">Image 4</div>
+                    </div>
+                  </div>
+                </section>`
+    },
+
+    /* ========== TESTIMONIALS ========== */
+    {
+      id: 'testimonials',
+      label: 'Testimonials',
+      category: 'Sections',
+      content: `<section style="padding: 80px 20px; background: #2c3e50; color: white;">
+                  <div style="max-width: 1200px; margin: 0 auto;">
+                    <h2 style="text-align: center; font-size: 2.5em; margin: 0 0 60px 0;">What Our Clients Say</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                      <div style="background: #34495e; padding: 30px; border-radius: 10px;">
+                        <p style="font-style: italic; margin: 0 0 20px 0; line-height: 1.6;">"This platform transformed our business. The results were incredible!"</p>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                          <div style="width: 50px; height: 50px; background: #3498db; border-radius: 50%;"></div>
+                          <div>
+                            <div style="font-weight: bold;">John Smith</div>
+                            <div style="color: #bdc3c7; font-size: 0.9em;">CEO, Company</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div style="background: #34495e; padding: 30px; border-radius: 10px;">
+                        <p style="font-style: italic; margin: 0 0 20px 0; line-height: 1.6;">"Outstanding service and support. Highly recommended!"</p>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                          <div style="width: 50px; height: 50px; background: #2ecc71; border-radius: 50%;"></div>
+                          <div>
+                            <div style="font-weight: bold;">Sarah Johnson</div>
+                            <div style="color: #bdc3c7; font-size: 0.9em;">Marketing Director</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>`
+    },
+
+    /* ========== PRICING TABLES ========== */
+    {
+      id: 'pricing-table',
+      label: 'Pricing Table',
+      category: 'E-commerce',
+      content: `<section style="padding: 80px 20px; background: #f8f9fa;">
+                  <div style="max-width: 1200px; margin: 0 auto;">
+                    <h2 style="text-align: center; font-size: 2.5em; color: #2c3e50; margin: 0 0 60px 0;">Simple Pricing</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                      <div style="background: white; padding: 40px; border-radius: 10px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                        <h3 style="color: #2c3e50; margin: 0 0 20px 0;">Basic</h3>
+                        <div style="font-size: 3em; color: #3498db; margin: 0 0 20px 0;">$19<span style="font-size: 0.5em; color: #7f8c8d;">/mo</span></div>
+                        <ul style="list-style: none; padding: 0; margin: 0 0 30px 0; text-align: left;">
+                          <li style="padding: 8px 0; color: #7f8c8d;">✓ 10 Projects</li>
+                          <li style="padding: 8px 0; color: #7f8c8d;">✓ 5GB Storage</li>
+                          <li style="padding: 8px 0; color: #7f8c8d;">✓ Basic Support</li>
+                        </ul>
+                        <button style="background: #3498db; color: white; border: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; width: 100%; font-weight: 600;">Get Started</button>
+                      </div>
+                      <div style="background: #3498db; color: white; padding: 40px; border-radius: 10px; text-align: center; box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3); transform: scale(1.05);">
+                        <h3 style="margin: 0 0 20px 0;">Pro</h3>
+                        <div style="font-size: 3em; margin: 0 0 20px 0;">$49<span style="font-size: 0.5em; opacity: 0.8;">/mo</span></div>
+                        <ul style="list-style: none; padding: 0; margin: 0 0 30px 0; text-align: left;">
+                          <li style="padding: 8px 0; opacity: 0.9;">✓ Unlimited Projects</li>
+                          <li style="padding: 8px 0; opacity: 0.9;">✓ 50GB Storage</li>
+                          <li style="padding: 8px 0; opacity: 0.9;">✓ Priority Support</li>
+                        </ul>
+                        <button style="background: white; color: #3498db; border: none; padding: 12px 30px; border-radius: 5px; cursor: pointer; width: 100%; font-weight: 600;">Get Started</button>
+                      </div>
+                    </div>
+                  </div>
+                </section>`
+    },
+
+    /* ========== CONTACT FORMS ========== */
+    {
+      id: 'contact-form',
+      label: 'Contact Form',
+      category: 'Forms',
+      content: `<section style="padding: 80px 20px;">
+                  <div style="max-width: 600px; margin: 0 auto;">
+                    <h2 style="text-align: center; font-size: 2.5em; color: #2c3e50; margin: 0 0 40px 0;">Get In Touch</h2>
+                    <form style="background: white; padding: 40px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                      <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; color: #2c3e50; font-weight: 500;">Name</label>
+                        <input type="text" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 1em;">
+                      </div>
+                      <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; color: #2c3e50; font-weight: 500;">Email</label>
+                        <input type="email" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 1em;">
+                      </div>
+                      <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; color: #2c3e50; font-weight: 500;">Message</label>
+                        <textarea style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 1em; height: 120px; resize: vertical;"></textarea>
+                      </div>
+                      <button style="background: #3498db; color: white; border: none; padding: 15px 30px; border-radius: 5px; cursor: pointer; font-weight: 600; width: 100%;">Send Message</button>
+                    </form>
+                  </div>
+                </section>`
+    },
+
+    /* ========== BLOG COMPONENTS ========== */
+    {
+      id: 'blog-post',
+      label: 'Blog Post',
+      category: 'Blog',
+      content: `<article style="max-width: 800px; margin: 0 auto; padding: 40px 20px;">
+                  <h1 style="font-size: 2.5em; color: #2c3e50; margin: 0 0 20px 0;">Blog Post Title</h1>
+                  <div style="color: #7f8c8d; margin-bottom: 30px;">
+                    <span>By Author Name</span> • <span>March 15, 2024</span> • <span>5 min read</span>
+                  </div>
+                  <div style="background: #ecf0f1; height: 300px; border-radius: 8px; margin-bottom: 30px; display: flex; align-items: center; justify-content: center; color: #7f8c8d;">
+                    Featured Image
+                  </div>
+                  <p style="font-size: 1.1em; line-height: 1.7; color: #2c3e50; margin-bottom: 20px;">
+                    This is the introduction to your blog post. It should capture the reader's attention and provide a brief overview of what they'll learn.
+                  </p>
+                  <p style="font-size: 1.1em; line-height: 1.7; color: #2c3e50;">
+                    Continue writing your blog post content here. You can add more paragraphs, images, and other elements as needed.
+                  </p>
+                </article>`
+    },
+
+    /* ========== CALL TO ACTION ========== */
+    {
+      id: 'cta-section',
+      label: 'Call to Action',
+      category: 'Marketing',
+      content: `<section style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 80px 20px; text-align: center;">
+                  <div style="max-width: 600px; margin: 0 auto;">
+                    <h2 style="font-size: 2.5em; margin: 0 0 20px 0;">Ready to Get Started?</h2>
+                    <p style="font-size: 1.2em; margin: 0 0 40px 0; opacity: 0.9;">Join thousands of satisfied customers and transform your business today.</p>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                      <button style="background: white; color: #667eea; border: none; padding: 15px 35px; font-size: 1.1em; border-radius: 30px; cursor: pointer; font-weight: 600;">Start Free Trial</button>
+                      <button style="background: transparent; color: white; border: 2px solid white; padding: 15px 35px; font-size: 1.1em; border-radius: 30px; cursor: pointer; font-weight: 600;">Schedule Demo</button>
+                    </div>
+                  </div>
+                </section>`
+    },
+
+    /* ========== TEAM SECTION ========== */
+    {
+      id: 'team-section',
+      label: 'Team Section',
+      category: 'Sections',
+      content: `<section style="padding: 80px 20px; background: #f8f9fa;">
+                  <div style="max-width: 1200px; margin: 0 auto;">
+                    <h2 style="text-align: center; font-size: 2.5em; color: #2c3e50; margin: 0 0 60px 0;">Meet Our Team</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+                      <div style="text-align: center;">
+                        <div style="background: #3498db; width: 150px; height: 150px; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2em;">👨‍💼</div>
+                        <h3 style="color: #2c3e50; margin: 0 0 10px 0;">John Doe</h3>
+                        <p style="color: #3498db; margin: 0 0 15px 0; font-weight: 500;">CEO & Founder</p>
+                        <p style="color: #7f8c8d;">Visionary leader with 10+ years of industry experience.</p>
+                      </div>
+                      <div style="text-align: center;">
+                        <div style="background: #2ecc71; width: 150px; height: 150px; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2em;">👩‍💼</div>
+                        <h3 style="color: #2c3e50; margin: 0 0 10px 0;">Jane Smith</h3>
+                        <p style="color: #2ecc71; margin: 0 0 15px 0; font-weight: 500;">CTO</p>
+                        <p style="color: #7f8c8d;">Technical expert driving innovation and development.</p>
+                      </div>
+                    </div>
+                  </div>
+                </section>`
+      },
+
       
       /* ========== MOVIE CARDS ========== */
       { 
         id: 'movie-card', 
         label: 'Movie Card', 
-        category: 'Cards',
+        category: 'Movie Website',
         content: `<div class="movie-card" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;padding:15px;margin:10px;max-width:300px;">
                     <img class="movie-poster" src="${PLACEHOLDER_SVG}" alt="Poster" style="width:100%;border-radius:4px;">
                     <div class="movie-title" style="font-weight:bold;margin:10px 0;font-size:18px;">Movie Title</div>
@@ -103,7 +364,7 @@ const editor =grapesjs.init({
       {
         id: 'movie-card-dark',
         label: 'Dark Movie Card',
-        category: 'Cards',
+        category: 'Movie Website',
         content: `<div class="movie-card" style="background:#2c3e50;color:white;border:1px solid #34495e;border-radius:12px;padding:20px;margin:10px;max-width:300px;box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
                     <img class="movie-poster" src="${PLACEHOLDER_SVG}" alt="Poster" style="width:100%;border-radius:8px;margin-bottom:15px;">
                     <div class="movie-title" style="font-weight:bold;margin:10px 0;font-size:20px;color:#ecf0f1;">Movie Title</div>
@@ -156,13 +417,13 @@ const editor =grapesjs.init({
       { 
         id: 'movie-trailer',
         label: 'Trailer',
-        category: 'Media',
+        category: 'Movie Website',
         content: '<div style="text-align:center;padding:20px;"><iframe class="movie-trailer" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen style="width:100%;max-width:560px;height:315px;border-radius:8px;"></iframe></div>' 
       },
       {
         id: 'video-section',
         label: 'Video Section',
-        category: 'Media',
+        category: 'Movie Website',
         content: `<section style="background: #1a1a1a; padding: 40px 20px; text-align: center;">
                     <h2 style="color: white; margin-bottom: 30px;">Latest Trailers</h2>
                     <div style="display: inline-block; background: #2c2c2c; padding: 20px; border-radius: 10px;">
@@ -223,7 +484,7 @@ const editor =grapesjs.init({
       {
         id: 'omdb-avengers',
         label: 'Avengers',
-        category: 'Movie API',
+        category: 'Movie Website',
         content: `<div class="movie-card omdb-movie" data-movie-id="tt4154796" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;padding:15px;margin:10px;max-width:300px;">
                     <img class="movie-poster" src="${PLACEHOLDER_SVG}" alt="Loading" style="width:100%;border-radius:4px;">
                     <div class="movie-title" style="font-weight:bold;margin:10px 0;font-size:18px;">Loading Avengers...</div>
@@ -238,7 +499,7 @@ const editor =grapesjs.init({
       {
         id: 'omdb-spiderman',
         label: 'Spider-Man',
-        category: 'Movie API',
+        category: 'Movie Website',
         content: `<div class="movie-card omdb-movie" data-movie-id="tt10872600" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;padding:15px;margin:10px;max-width:300px;">
                     <img class="movie-poster" src="${PLACEHOLDER_SVG}" alt="Loading" style="width:100%;border-radius:4px;">
                     <div class="movie-title" style="font-weight:bold;margin:10px 0;font-size:18px;">Loading Spider-Man...</div>
@@ -253,7 +514,7 @@ const editor =grapesjs.init({
       {
         id: 'omdb-batman',
         label: 'Batman',
-        category: 'Movie API',
+        category: 'Movie Website',
         content: `<div class="movie-card omdb-movie" data-movie-id="tt1877830" style="background:#f8f9fa;border:1px solid #ddd;border-radius:8px;padding:15px;margin:10px;max-width:300px;">
                     <img class="movie-poster" src="${PLACEHOLDER_SVG}" alt="Loading" style="width:100%;border-radius:4px;">
                     <div class="movie-title" style="font-weight:bold;margin:10px 0;font-size:18px;">Loading Batman...</div>
@@ -268,7 +529,7 @@ const editor =grapesjs.init({
      { 
       id: 'netflix-hero', 
       label: 'Netflix Hero', 
-      category: 'Netflix',
+      category: 'Movie Website',
       content: `<section class="netflix-hero-mobile" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://assets.nflxext.com/ffe/siteui/vlv3/9d3533b2-0e2b-40b2-95e0-ecd7979cc88b/387cfa57-7e18-4c16-8e8c-c8de233050e2/IN-en-20240311-popsignuptwoweeks-perspective_alpha_website_large.jpg'); background-size: cover; background-position: center; color: white; padding: 80px 20px; text-align: center; min-height: 70vh; display: flex; align-items: center; justify-content: center;">
                   <div style="max-width: 800px;" class="mobile-padding">
                     <h1 style="font-size: 3.5rem; font-weight: 900; margin: 0 0 20px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Unlimited movies, TV shows and more</h1>
@@ -284,8 +545,8 @@ const editor =grapesjs.init({
     /* ========== MOBILE-RESPONSIVE NETFLIX HEADER ========== */
     {
       id: 'netflix-header',
-      label: 'Netflix Header (Mobile)',
-      category: 'Netflix',
+      label: 'Netflix Header',
+      category: 'Movie Website',
       content: `<header class="netflix-header-mobile" style="background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%); padding: 15px 30px; position: absolute; top: 0; left: 0; right: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center;">
                   <div style="display: flex; align-items: center; gap: 20px;">
                     <img class="netflix-logo-mobile" src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" style="height: 30px; filter: brightness(0) invert(1);">
@@ -305,7 +566,7 @@ const editor =grapesjs.init({
     {
       id: 'netflix-row',
       label: 'Movie Row',
-      category: 'Netflix',
+      category: 'Movie Website',
       content: `<section class="netflix-row-mobile mobile-padding" style="padding: 30px 0; background: #141414;">
                   <h2 class="netflix-row-title" style="color: white; font-size: 1.5rem; margin: 0 0 15px 20px; font-weight: 600;">Popular on Netflix</h2>
                   <div style="display: flex; gap: 10px; overflow-x: auto; padding: 0 20px 10px 20px; scrollbar-width: none;">
@@ -329,7 +590,7 @@ const editor =grapesjs.init({
     {
       id: 'netflix-billboard',
       label: 'Netflix Billboard',
-      category: 'Netflix',
+      category: 'Movie Website',
       content: `<section class="netflix-billboard-mobile mobile-padding" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://image.tmdb.org/t/p/original/ggFHVNu6YYI5L9pCfOacjizRGt.jpg'); background-size: cover; background-position: center; color: white; padding: 100px 20px 50px 20px; min-height: 60vh; display: flex; align-items: flex-end;">
                   <div style="max-width: 100%;" class="mobile-text-center">
                     <h1 style="font-size: 2.5rem; font-weight: 900; margin: 0 0 15px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Stranger Things</h1>
@@ -350,7 +611,7 @@ const editor =grapesjs.init({
     {
       id: 'netflix-grid',
       label: 'Movie Grid',
-      category: 'Netflix',
+      category: 'Movie Website',
       content: `<section class="mobile-padding" style="padding: 30px 0; background: #141414;">
                   <h2 class="mobile-text-center" style="color: white; font-size: 1.5rem; margin: 0 0 20px 0; font-weight: 600;">Trending Now</h2>
                   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; padding: 0 15px;">
@@ -376,7 +637,7 @@ const editor =grapesjs.init({
     {
       id: 'netflix-footer',
       label: 'Netflix Footer',
-      category: 'Netflix',
+      category: 'Movie Website',
       content: `<footer class="netflix-footer-mobile" style="background: #141414; color: #808080; padding: 40px 20px; margin-top: 30px;">
                   <div style="max-width: 1000px; margin: 0 auto;">
                     <div class="footer-grid-mobile" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin-bottom: 25px;">
@@ -412,7 +673,7 @@ const editor =grapesjs.init({
     { 
       id: 'movie-trailer',
       label: 'Trailer',
-      category: 'Media',
+      category: 'Movie Website',
       content: '<div style="text-align:center;padding:20px;"><iframe class="movie-trailer" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen style="width:100%;max-width:560px;height:315px;border-radius:8px;"></iframe></div>' 
     }
     ]
