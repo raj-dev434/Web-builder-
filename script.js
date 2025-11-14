@@ -2,9 +2,29 @@
 const OMDB_API_KEY = '76764ddc';
 const OMDB_API = `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=`;
 
-// SVG placeholder for images (always works)
+// SVG placeholder for images 
 const PLACEHOLDER_SVG = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjQ1MCIgdmlld0JveD0iMCAwIDMwMCA0NTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iNDUwIiBmaWxsPSIjRjNGNEY2Ii8+Cjx0ZXh0IHg9IjE1MCIgeT0iMjI1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOUE5QTlBIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTgiPkxvYWRpbmcuLi48L3RleHQ+Cjwvc3ZnPg==';
 
+/* ---------- E-COMMERCE PLACEHOLDER ---------- */
+const ECOMMERCE_PLACEHOLDERS = {
+  PRODUCT_IMAGE: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDMwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNGM0Y0RjYiLz48cmVjdCB4PSI1MCIgeT0iNTAiIHdpZHRoPSIyMDAiIGhlaWdodD0iMTUwIiBmaWxsPSIjRThFOUVDIi8+PHBhdGggZD0iTTEwMCAxMDBIMjAwVjE1MEgxMDBWMTAwWiIgZmlsbD0iIzlBOUE5QSIvPjx0ZXh0IHg9IjE1MCIgeT0iMjMwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOUE5QTlBIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiPuKZkO+4j1Byb2R1Y3QgSW1hZ2U8L3RleHQ+PC9zdmc+',
+  PRODUCT_THUMB: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9IiNGM0Y0RjYiLz48cmVjdCB4PSIxNSIgeT0iMTUiIHdpZHRoPSI3MCIgaGVpZ2h0PSIzNSIgZmlsbD0iI0U4RTlFQyIvPjxwYXRoIGQ9Ik0zNSAzNUg2NVY1NUgzNVYzNVoiIGZpbGw9IiM5QTlBOUEiLz48L3N2Zz4=',
+  AVATAR: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA4MCA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI0MCIgY3k9IjQwIiByPSI0MCIgZmlsbD0iI2YwZjhmZiIvPjxjaXJjbGUgY3g9IjQwIiBjeT0iMzAiIHI9IjE1IiBmaWxsPSIjZDNlMWY3Ii8+PHBhdGggZD0iTTIwIDYwYzAtMTEuMDQgOC45Ni0yMCAyMC0yMHMxMCA4Ljk2IDEwIDIwIiBmaWxsPSIjZDNlMWY3Ii8+PC9zdmc+'
+};
+
+const ECOMMERCE_TEXT = {
+  PRODUCT_NAME: "Premium Product",
+  PRODUCT_PRICE: "$49.99",
+  PRODUCT_DESC: "High-quality product description goes here. Perfect for your needs with excellent features.",
+  CATEGORY_NAME: "Product Category",
+  BUTTON_ADD_CART: "Add to Cart",
+  BUTTON_BUY_NOW: "Buy Now",
+  BUTTON_VIEW_DETAILS: "View Details",
+  SALE_BADGE: "Sale!",
+  STOCK_STATUS: "In Stock",
+  REVIEW_TEXT: "Excellent product! Highly recommended.",
+  CUSTOMER_NAME: "John D."
+};
 // Register component type BEFORE initializing editor
 grapesjs.plugins.add('omdb-movie-type', (editor) => {
   editor.DomComponents.addType('omdb-movie', {
@@ -675,11 +695,408 @@ const editor =grapesjs.init({
       label: 'Trailer',
       category: 'Movie Website',
       content: '<div style="text-align:center;padding:20px;"><iframe class="movie-trailer" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen style="width:100%;max-width:560px;height:315px;border-radius:8px;"></iframe></div>' 
-    }
+    },{
+    id: 'product-grid',
+    label: 'Product Grid',
+    category: 'E-commerce',
+    content: `<section style="padding: 60px 20px; background: #f8f9fa;">
+                <div style="max-width: 1200px; margin: 0 auto;">
+                  <h2 style="text-align: center; margin-bottom: 40px; color: #333;">Featured Products</h2>
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                    <!-- Product 1 -->
+                    <div class="product-card" style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                      <div style="position: relative;">
+                        <img src="${ECOMMERCE_PLACEHOLDERS.PRODUCT_IMAGE}" alt="Product" style="width: 100%; height: 200px; object-fit: cover;">
+                        <span style="position: absolute; top: 10px; right: 10px; background: #ff4444; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold;">${ECOMMERCE_TEXT.SALE_BADGE}</span>
+                      </div>
+                      <div style="padding: 20px;">
+                        <h3 style="margin: 0 0 10px 0; color: #333; font-size: 1.1em;">${ECOMMERCE_TEXT.PRODUCT_NAME}</h3>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                          <span style="font-size: 1.2em; font-weight: bold; color: #2c5aa0;">${ECOMMERCE_TEXT.PRODUCT_PRICE}</span>
+                          <span style="color: #28a745; font-size: 0.9em;">${ECOMMERCE_TEXT.STOCK_STATUS}</span>
+                        </div>
+                        <p style="color: #666; font-size: 0.9em; margin-bottom: 15px; line-height: 1.4;">${ECOMMERCE_TEXT.PRODUCT_DESC}</p>
+                        <button style="background: #2c5aa0; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; width: 100%; font-weight: bold;">${ECOMMERCE_TEXT.BUTTON_ADD_CART}</button>
+                      </div>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="product-card" style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                      <img src="${ECOMMERCE_PLACEHOLDERS.PRODUCT_IMAGE}" alt="Product" style="width: 100%; height: 200px; object-fit: cover;">
+                      <div style="padding: 20px;">
+                        <h3 style="margin: 0 0 10px 0; color: #333; font-size: 1.1em;">Premium Headphones</h3>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                          <span style="font-size: 1.2em; font-weight: bold; color: #2c5aa0;">$89.99</span>
+                          <span style="color: #28a745; font-size: 0.9em;">In Stock</span>
+                        </div>
+                        <p style="color: #666; font-size: 0.9em; margin-bottom: 15px; line-height: 1.4;">High-quality wireless headphones with noise cancellation.</p>
+                        <button style="background: #2c5aa0; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; width: 100%; font-weight: bold;">Add to Cart</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>`
+  },
+
+  /* ========== SINGLE PRODUCT ========== */
+  {
+    id: 'single-product',
+    label: 'Single Product',
+    category: 'E-commerce',
+    content: `<section style="padding: 60px 20px; background: white;">
+                <div style="max-width: 1200px; margin: 0 auto;">
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start;">
+                    <!-- Product Images -->
+                    <div>
+                      <div style="background: #f8f9fa; border-radius: 8px; padding: 20px; text-align: center;">
+                        <img src="${ECOMMERCE_PLACEHOLDERS.PRODUCT_IMAGE}" alt="Product" style="max-width: 100%; height: auto; border-radius: 4px;">
+                      </div>
+                      <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <img src="${ECOMMERCE_PLACEHOLDERS.PRODUCT_THUMB}" alt="Thumb" style="width: 60px; height: 60px; border: 2px solid #ddd; border-radius: 4px; cursor: pointer;">
+                        <img src="${ECOMMERCE_PLACEHOLDERS.PRODUCT_THUMB}" alt="Thumb" style="width: 60px; height: 60px; border: 2px solid #ddd; border-radius: 4px; cursor: pointer;">
+                        <img src="${ECOMMERCE_PLACEHOLDERS.PRODUCT_THUMB}" alt="Thumb" style="width: 60px; height: 60px; border: 2px solid #ddd; border-radius: 4px; cursor: pointer;">
+                      </div>
+                    </div>
+                    
+                    <!-- Product Details -->
+                    <div>
+                      <h1 style="font-size: 2em; margin: 0 0 10px 0; color: #333;">${ECOMMERCE_TEXT.PRODUCT_NAME}</h1>
+                      <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                        <span style="font-size: 1.5em; font-weight: bold; color: #2c5aa0;">${ECOMMERCE_TEXT.PRODUCT_PRICE}</span>
+                        <span style="text-decoration: line-through; color: #999;">$79.99</span>
+                        <span style="background: #ff4444; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.9em;">Save 20%</span>
+                      </div>
+                      
+                      <div style="margin-bottom: 20px;">
+                        <span style="color: #28a745; font-weight: bold;">${ECOMMERCE_TEXT.STOCK_STATUS}</span>
+                        <span style="color: #666; margin-left: 10px;">• 15 items left</span>
+                      </div>
+                      
+                      <p style="color: #666; line-height: 1.6; margin-bottom: 25px;">${ECOMMERCE_TEXT.PRODUCT_DESC} This premium product offers exceptional quality and durability for everyday use.</p>
+                      
+                      <div style="margin-bottom: 25px;">
+                        <label style="display: block; margin-bottom: 8px; font-weight: bold;">Quantity:</label>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                          <button style="background: #f8f9fa; border: 1px solid #ddd; width: 40px; height: 40px; border-radius: 4px; cursor: pointer;">-</button>
+                          <input type="text" value="1" style="width: 60px; height: 40px; border: 1px solid #ddd; border-radius: 4px; text-align: center;">
+                          <button style="background: #f8f9fa; border: 1px solid #ddd; width: 40px; height: 40px; border-radius: 4px; cursor: pointer;">+</button>
+                        </div>
+                      </div>
+                      
+                      <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                        <button style="background: #2c5aa0; color: white; border: none; padding: 15px 30px; border-radius: 4px; cursor: pointer; font-weight: bold; flex: 1;">${ECOMMERCE_TEXT.BUTTON_ADD_CART}</button>
+                        <button style="background: #28a745; color: white; border: none; padding: 15px 30px; border-radius: 4px; cursor: pointer; font-weight: bold; flex: 1;">${ECOMMERCE_TEXT.BUTTON_BUY_NOW}</button>
+                      </div>
+                      
+                      <div style="border-top: 1px solid #eee; padding-top: 20px;">
+                        <p style="color: #666; margin: 0;">✔ Free shipping • ✔ 30-day returns • ✔ 1-year warranty</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>`
+  },
+
+  /* ========== SHOPPING CART ========== */
+  {
+    id: 'shopping-cart',
+    label: 'Shopping Cart',
+    category: 'E-commerce',
+    content: `<section style="padding: 60px 20px; background: #f8f9fa;">
+                <div style="max-width: 1000px; margin: 0 auto;">
+                  <h1 style="text-align: center; margin-bottom: 40px; color: #333;">Shopping Cart</h1>
+                  
+                  <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px;">
+                    <!-- Cart Items -->
+                    <div style="background: white; border-radius: 8px; padding: 30px;">
+                      <div style="display: flex; align-items: center; padding: 20px 0; border-bottom: 1px solid #eee;">
+                        <img src="${ECOMMERCE_PLACEHOLDERS.PRODUCT_THUMB}" alt="Product" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px;">
+                        <div style="flex: 1; margin-left: 20px;">
+                          <h3 style="margin: 0 0 5px 0; color: #333;">${ECOMMERCE_TEXT.PRODUCT_NAME}</h3>
+                          <p style="color: #666; margin: 0 0 10px 0; font-size: 0.9em;">SKU: PRD-001</p>
+                          <span style="font-weight: bold; color: #2c5aa0;">${ECOMMERCE_TEXT.PRODUCT_PRICE}</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                          <button style="background: #f8f9fa; border: 1px solid #ddd; width: 35px; height: 35px; border-radius: 4px; cursor: pointer;">-</button>
+                          <span style="min-width: 40px; text-align: center;">1</span>
+                          <button style="background: #f8f9fa; border: 1px solid #ddd; width: 35px; height: 35px; border-radius: 4px; cursor: pointer;">+</button>
+                        </div>
+                        <button style="background: none; border: none; color: #ff4444; cursor: pointer; margin-left: 20px;">🗑️</button>
+                      </div>
+                      
+                      <div style="display: flex; align-items: center; padding: 20px 0;">
+                        <img src="${ECOMMERCE_PLACEHOLDERS.PRODUCT_THUMB}" alt="Product" style="width: 80px; height: 80px; object-fit: cover; border-radius: 4px;">
+                        <div style="flex: 1; margin-left: 20px;">
+                          <h3 style="margin: 0 0 5px 0; color: #333;">Wireless Headphones</h3>
+                          <p style="color: #666; margin: 0 0 10px 0; font-size: 0.9em;">SKU: PRD-002</p>
+                          <span style="font-weight: bold; color: #2c5aa0;">$89.99</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                          <button style="background: #f8f9fa; border: 1px solid #ddd; width: 35px; height: 35px; border-radius: 4px; cursor: pointer;">-</button>
+                          <span style="min-width: 40px; text-align: center;">1</span>
+                          <button style="background: #f8f9fa; border: 1px solid #ddd; width: 35px; height: 35px; border-radius: 4px; cursor: pointer;">+</button>
+                        </div>
+                        <button style="background: none; border: none; color: #ff4444; cursor: pointer; margin-left: 20px;">🗑️</button>
+                      </div>
+                    </div>
+                    
+                    <!-- Cart Summary -->
+                    <div style="background: white; border-radius: 8px; padding: 30px; height: fit-content;">
+                      <h3 style="margin: 0 0 20px 0; color: #333;">Cart Summary</h3>
+                      
+                      <div style="border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                          <span>Subtotal:</span>
+                          <span>$139.98</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                          <span>Shipping:</span>
+                          <span style="color: #28a745;">Free</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                          <span>Tax:</span>
+                          <span>$12.60</span>
+                        </div>
+                      </div>
+                      
+                      <div style="display: flex; justify-content: space-between; font-size: 1.2em; font-weight: bold; margin-bottom: 25px;">
+                        <span>Total:</span>
+                        <span style="color: #2c5aa0;">$152.58</span>
+                      </div>
+                      
+                      <button style="background: #28a745; color: white; border: none; padding: 15px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; margin-bottom: 15px;">Proceed to Checkout</button>
+                      <button style="background: #6c757d; color: white; border: none; padding: 12px; border-radius: 4px; cursor: pointer; width: 100%;">Continue Shopping</button>
+                    </div>
+                  </div>
+                </div>
+              </section>`
+  },
+
+  /* ========== PRODUCT CATEGORIES ========== */
+  {
+    id: 'product-categories',
+    label: 'Product Categories',
+    category: 'E-commerce',
+    content: `<section style="padding: 60px 20px; background: white;">
+                <div style="max-width: 1200px; margin: 0 auto;">
+                  <h2 style="text-align: center; margin-bottom: 50px; color: #333;">Shop by Category</h2>
+                  
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                    <!-- Category 1 -->
+                    <div style="text-align: center; cursor: pointer;">
+                      <div style="background: #f8f9fa; border-radius: 8px; padding: 40px; margin-bottom: 15px; transition: transform 0.3s ease;">
+                        <img src="${ECOMMERCE_PLACEHOLDERS.PRODUCT_THUMB}" alt="Electronics" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+                      </div>
+                      <h3 style="margin: 0 0 10px 0; color: #333;">Electronics</h3>
+                      <p style="color: #666; margin: 0;">50 products</p>
+                    </div>
+                    
+                    <!-- Category 2 -->
+                    <div style="text-align: center; cursor: pointer;">
+                      <div style="background: #f8f9fa; border-radius: 8px; padding: 40px; margin-bottom: 15px; transition: transform 0.3s ease;">
+                        <img src="${ECOMMERCE_PLACEHOLDERS.PRODUCT_THUMB}" alt="Clothing" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+                      </div>
+                      <h3 style="margin: 0 0 10px 0; color: #333;">Clothing</h3>
+                      <p style="color: #666; margin: 0;">120 products</p>
+                    </div>
+                    
+                    <!-- Category 3 -->
+                    <div style="text-align: center; cursor: pointer;">
+                      <div style="background: #f8f9fa; border-radius: 8px; padding: 40px; margin-bottom: 15px; transition: transform 0.3s ease;">
+                        <img src="${ECOMMERCE_PLACEHOLDERS.PRODUCT_THUMB}" alt="Home" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+                      </div>
+                      <h3 style="margin: 0 0 10px 0; color: #333;">Home & Garden</h3>
+                      <p style="color: #666; margin: 0;">75 products</p>
+                    </div>
+                    
+                    <!-- Category 4 -->
+                    <div style="text-align: center; cursor: pointer;">
+                      <div style="background: #f8f9fa; border-radius: 8px; padding: 40px; margin-bottom: 15px; transition: transform 0.3s ease;">
+                        <img src="${ECOMMERCE_PLACEHOLDERS.PRODUCT_THUMB}" alt="Sports" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px;">
+                      </div>
+                      <h3 style="margin: 0 0 10px 0; color: #333;">Sports</h3>
+                      <p style="color: #666; margin: 0;">35 products</p>
+                    </div>
+                  </div>
+                </div>
+              </section>`
+  },
+
+  /* ========== CUSTOMER REVIEWS ========== */
+  {
+    id: 'customer-reviews',
+    label: 'Customer Reviews',
+    category: 'E-commerce',
+    content: `<section style="padding: 60px 20px; background: #f8f9fa;">
+                <div style="max-width: 1000px; margin: 0 auto;">
+                  <h2 style="text-align: center; margin-bottom: 40px; color: #333;">Customer Reviews</h2>
+                  
+                  <div style="background: white; border-radius: 8px; padding: 30px; margin-bottom: 30px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                      <div>
+                        <h3 style="margin: 0 0 5px 0; color: #333;">Overall Rating</h3>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                          <span style="font-size: 2em; font-weight: bold; color: #2c5aa0;">4.8</span>
+                          <div style="color: #ffc107;">★★★★★</div>
+                          <span style="color: #666;">(128 reviews)</span>
+                        </div>
+                      </div>
+                      <button style="background: #2c5aa0; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">Write a Review</button>
+                    </div>
+                  </div>
+                  
+                  <!-- Review 1 -->
+                  <div style="background: white; border-radius: 8px; padding: 25px; margin-bottom: 20px;">
+                    <div style="display: flex; justify-content: between; align-items: start; margin-bottom: 15px;">
+                      <div style="display: flex; align-items: center; gap: 15px;">
+                        <img src="${ECOMMERCE_PLACEHOLDERS.AVATAR}" alt="Customer" style="width: 50px; height: 50px; border-radius: 50%;">
+                        <div>
+                          <h4 style="margin: 0 0 5px 0; color: #333;">${ECOMMERCE_TEXT.CUSTOMER_NAME}</h4>
+                          <div style="color: #ffc107;">★★★★★</div>
+                        </div>
+                      </div>
+                      <span style="color: #666; font-size: 0.9em;">2 days ago</span>
+                    </div>
+                    <p style="color: #666; line-height: 1.6; margin: 0;">${ECOMMERCE_TEXT.REVIEW_TEXT} The quality exceeded my expectations and delivery was fast.</p>
+                  </div>
+                  
+                  <!-- Review 2 -->
+                  <div style="background: white; border-radius: 8px; padding: 25px;">
+                    <div style="display: flex; justify-content: between; align-items: start; margin-bottom: 15px;">
+                      <div style="display: flex; align-items: center; gap: 15px;">
+                        <img src="${ECOMMERCE_PLACEHOLDERS.AVATAR}" alt="Customer" style="width: 50px; height: 50px; border-radius: 50%;">
+                        <div>
+                          <h4 style="margin: 0 0 5px 0; color: #333;">Sarah M.</h4>
+                          <div style="color: #ffc107;">★★★★☆</div>
+                        </div>
+                      </div>
+                      <span style="color: #666; font-size: 0.9em;">1 week ago</span>
+                    </div>
+                    <p style="color: #666; line-height: 1.6; margin: 0;">Good product overall. The packaging could be better but the item itself is great value for money.</p>
+                  </div>
+                </div>
+              </section>`
+  },
+
+  /* ========== CHECKOUT FORM ========== */
+  {
+    id: 'checkout-form',
+    label: 'Checkout Form',
+    category: 'E-commerce',
+    content: `<section style="padding: 60px 20px; background: #f8f9fa;">
+                <div style="max-width: 1000px; margin: 0 auto;">
+                  <h1 style="text-align: center; margin-bottom: 40px; color: #333;">Checkout</h1>
+                  
+                  <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px;">
+                    <!-- Checkout Form -->
+                    <div style="background: white; border-radius: 8px; padding: 30px;">
+                      <h3 style="margin: 0 0 25px 0; color: #333;">Billing Details</h3>
+                      
+                      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                        <div>
+                          <label style="display: block; margin-bottom: 8px; font-weight: bold;">First Name *</label>
+                          <input type="text" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                        <div>
+                          <label style="display: block; margin-bottom: 8px; font-weight: bold;">Last Name *</label>
+                          <input type="text" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                      </div>
+                      
+                      <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; font-weight: bold;">Email Address *</label>
+                        <input type="email" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px;">
+                      </div>
+                      
+                      <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; font-weight: bold;">Address *</label>
+                        <input type="text" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px;">
+                      </div>
+                      
+                      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+                        <div>
+                          <label style="display: block; margin-bottom: 8px; font-weight: bold;">City *</label>
+                          <input type="text" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                        <div>
+                          <label style="display: block; margin-bottom: 8px; font-weight: bold;">State *</label>
+                          <input type="text" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                        <div>
+                          <label style="display: block; margin-bottom: 8px; font-weight: bold;">ZIP Code *</label>
+                          <input type="text" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px;">
+                        </div>
+                      </div>
+                      
+                      <h3 style="margin: 0 0 25px 0; color: #333;">Payment Method</h3>
+                      <div style="border: 1px solid #ddd; border-radius: 4px; padding: 20px; margin-bottom: 20px;">
+                        <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                          <input type="radio" name="payment" checked>
+                          Credit/Debit Card
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                          <input type="radio" name="payment">
+                          PayPal
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 10px;">
+                          <input type="radio" name="payment">
+                          Cash on Delivery
+                        </label>
+                      </div>
+                    </div>
+                    
+                    <!-- Order Summary -->
+                    <div style="background: white; border-radius: 8px; padding: 30px; height: fit-content;">
+                      <h3 style="margin: 0 0 25px 0; color: #333;">Order Summary</h3>
+                      
+                      <div style="border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                          <span>${ECOMMERCE_TEXT.PRODUCT_NAME} × 1</span>
+                          <span>${ECOMMERCE_TEXT.PRODUCT_PRICE}</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                          <span>Wireless Headphones × 1</span>
+                          <span>$89.99</span>
+                        </div>
+                      </div>
+                      
+                      <div style="border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                          <span>Subtotal:</span>
+                          <span>$139.98</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                          <span>Shipping:</span>
+                          <span style="color: #28a745;">Free</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                          <span>Tax:</span>
+                          <span>$12.60</span>
+                        </div>
+                      </div>
+                      
+                      <div style="display: flex; justify-content: space-between; font-size: 1.2em; font-weight: bold; margin-bottom: 25px;">
+                        <span>Total:</span>
+                        <span style="color: #2c5aa0;">$152.58</span>
+                      </div>
+                      
+                      <button style="background: #28a745; color: white; border: none; padding: 15px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">Place Order</button>
+                      
+                      <p style="text-align: center; color: #666; font-size: 0.9em; margin-top: 15px;">
+                        By placing your order, you agree to our <a href="#" style="color: #2c5aa0;">Terms & Conditions</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </section>`
+  }
     ]
   },
 
+  
+
   styleManager: {
+    
     sectors: [
       { 
         name: 'General', 
@@ -810,6 +1227,7 @@ function addCustomMovieFromModal() {
     alert('This movie block already exists!');
     return;
   }
+// Add all e-commerce blocks to your editor;
   
   const newMovieBlock = {
     id: `movie-${movieId}`,
