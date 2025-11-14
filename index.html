@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Web Builder</title>
+  <title>Movie Web Builder</title>
 
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -14,93 +14,89 @@
   <script src="https://unpkg.com/grapesjs"></script>
 </head>
 <body>
-  <div id="main-wrapper">
-    <div id="gjs"></div>
+  <!-- Top Controls Bar -->
+  <div class="controls-bar">
+    <div class="controls-left">
+      <button class="ctrl-btn add-movie" onclick="showMovieSearch()">
+        <i class="fa fa-search"></i> <span>Add Movie</span>
+      </button>
+    </div>
+    <div class="controls-right">
+      <button class="ctrl-btn preview" onclick="showPreview()">
+        <i class="fa fa-eye"></i> Preview
+      </button>
+      <button class="ctrl-btn export" onclick="exportHTML()">
+        <i class="fa fa-download"></i> Export
+      </button>
+    </div>
+  </div>
 
-    <!-- COLLAPSIBLE PANEL -->
-    <div id="movie-panel" class="movie-panel collapsed">
-      <div class="panel-header" onclick="toggleMoviePanel()">
-        <span>Components</span>
-        <span class="toggle-icon">Show</span>
+  <div id="main-wrapper">
+    <!-- LEFT SIDEBAR FOR COMPONENTS -->
+    <div id="left-sidebar" class="sidebar">
+      <div class="sidebar-header">
+        <h3>🎬 Components</h3>
+        <button class="sidebar-toggle" onclick="toggleSidebar()">
+          <i class="fa fa-chevron-left"></i>
+        </button>
       </div>
-      <div class="panel-body">
+      <div class="sidebar-body">
         <div id="blocks"></div>
       </div>
     </div>
+
+    <!-- MAIN EDITOR AREA -->
+    <div id="gjs"></div>
   </div>
 
-<!-- Top Controls Bar -->
-<div class="controls-bar">
-  <div class="controls-left">
-    <button class="ctrl-btn add-movie" onclick="showMovieSearch()">
-      <i class="fa fa-search"></i> <span>Add Movie</span>
-    </button>
-    <!-- <button class="ctrl-btn dark-mode" onclick="toggleDarkMode()">
-      <i class="fa fa-moon"></i> Dark Mode
-    </button> -->
-  </div>
-  <div class="controls-right">
-    <button class="ctrl-btn preview" onclick="showPreview()">
-      <i class="fa fa-eye"></i> Preview
-    </button>
-    <button class="ctrl-btn export" onclick="exportHTML()">
-      <i class="fa fa-download"></i> Export
-    </button>
-  </div>
-</div>
-
-<!-- Movie Search Modal (Hidden by default) -->
-<div id="movieSearchModal" class="movie-modal" style="display: none;">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h3>Add Movie by IMDb ID</h3>
-      <button class="close-modal" onclick="closeMovieSearch()">&times;</button>
-    </div>
-    <div class="modal-body">
-      <input type="text" id="movieSearchInput" placeholder="tt4154796 (Avengers: Endgame)" 
-             class="movie-search-input">
-      <div class="modal-examples">
-        <p><strong>Popular Movie IDs:</strong></p>
-        <div class="example-grid">
-          <span class="example-item" onclick="useExample('tt4154796')">tt4154796 - Avengers</span>
-          <span class="example-item" onclick="useExample('tt10872600')">tt10872600 - Spider-Man</span>
-          <span class="example-item" onclick="useExample('tt1877830')">tt1877830 - Batman</span>
-          <span class="example-item" onclick="useExample('tt0111161')">tt0111161 - Shawshank</span>
+  <!-- Movie Search Modal -->
+  <div id="movieSearchModal" class="movie-modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>🎬 Add Movie by IMDb ID</h3>
+        <button class="close-modal" onclick="closeMovieSearch()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="text" id="movieSearchInput" placeholder="tt4154796 (Avengers: Endgame)" 
+               class="movie-search-input">
+        <div class="modal-examples">
+          <p><strong>Popular Movie IDs:</strong></p>
+          <div class="example-grid">
+            <span class="example-item" onclick="useExample('tt4154796')">tt4154796 - Avengers</span>
+            <span class="example-item" onclick="useExample('tt10872600')">tt10872600 - Spider-Man</span>
+            <span class="example-item" onclick="useExample('tt1877830')">tt1877830 - Batman</span>
+            <span class="example-item" onclick="useExample('tt0111161')">tt0111161 - Shawshank</span>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="modal-footer">
-      <button class="modal-btn cancel" onclick="closeMovieSearch()">Cancel</button>
-      <button class="modal-btn confirm" onclick="addCustomMovieFromModal()">Add Movie Block</button>
+      <div class="modal-footer">
+        <button class="modal-btn cancel" onclick="closeMovieSearch()">Cancel</button>
+        <button class="modal-btn confirm" onclick="addCustomMovieFromModal()">Add Movie Block</button>
+      </div>
     </div>
   </div>
-</div>
-  <!-- SCRIPT -->
+
   <script src="script.js"></script>
   <script>
-   // Panel Toggle
-    window.toggleMoviePanel = function () {
-      const panel = document.getElementById('movie-panel');
-      panel.classList.toggle('collapsed');
-      const icon = document.querySelector('.toggle-icon');
-      icon.textContent = panel.classList.contains('collapsed') ? 'Show' : 'Hide';
-
-      if (!panel.classList.contains('collapsed')) {
-        setTimeout(() => {
-          if (window.editor) {
-            window.editor.BlockManager.render(
-              window.editor.BlockManager.getAll().map(b => b),
-              { external: true, container: '#blocks' }
-            );
-          }
-        }, 350);
+    // Sidebar Toggle Function
+    window.toggleSidebar = function () {
+      const sidebar = document.getElementById('left-sidebar');
+      const toggleIcon = document.querySelector('.sidebar-toggle i');
+      sidebar.classList.toggle('collapsed');
+      
+      if (sidebar.classList.contains('collapsed')) {
+        toggleIcon.className = 'fa fa-chevron-right';
+      } else {
+        toggleIcon.className = 'fa fa-chevron-left';
       }
     };
 
-    // Auto-open panel on first visit
-    if (!localStorage.getItem('panelOpened')) {
-      setTimeout(toggleMoviePanel, 500);
-      localStorage.setItem('panelOpened', 'true');
+    // Auto-open sidebar on first visit
+    if (!localStorage.getItem('sidebarOpened')) {
+      setTimeout(() => {
+        document.getElementById('left-sidebar').classList.remove('collapsed');
+      }, 500);
+      localStorage.setItem('sidebarOpened', 'true');
     }
   </script>
 </body>

@@ -48,12 +48,12 @@ grapesjs.plugins.add('omdb-movie-type', (editor) => {
   });
 });
 
-const editor = grapesjs.init({
+const editor =grapesjs.init({
   container: '#gjs',
-  height: 'calc(100vh - 60px)',
+  height: '100%',
   fromElement: true,
   autorender: true,
-  plugins: ['omdb-movie-type'], // Load our custom plugin
+  plugins: ['omdb-movie-type'],
   storageManager: { 
     type: 'local', 
     autosave: true, 
@@ -266,8 +266,8 @@ const editor = grapesjs.init({
                   </div>`
       },
      { 
-      id: 'netflix-hero-mobile', 
-      label: 'Netflix Hero (Mobile)', 
+      id: 'netflix-hero', 
+      label: 'Netflix Hero', 
       category: 'Netflix',
       content: `<section class="netflix-hero-mobile" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://assets.nflxext.com/ffe/siteui/vlv3/9d3533b2-0e2b-40b2-95e0-ecd7979cc88b/387cfa57-7e18-4c16-8e8c-c8de233050e2/IN-en-20240311-popsignuptwoweeks-perspective_alpha_website_large.jpg'); background-size: cover; background-position: center; color: white; padding: 80px 20px; text-align: center; min-height: 70vh; display: flex; align-items: center; justify-content: center;">
                   <div style="max-width: 800px;" class="mobile-padding">
@@ -283,7 +283,7 @@ const editor = grapesjs.init({
 
     /* ========== MOBILE-RESPONSIVE NETFLIX HEADER ========== */
     {
-      id: 'netflix-header-mobile',
+      id: 'netflix-header',
       label: 'Netflix Header (Mobile)',
       category: 'Netflix',
       content: `<header class="netflix-header-mobile" style="background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, transparent 100%); padding: 15px 30px; position: absolute; top: 0; left: 0; right: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center;">
@@ -303,8 +303,8 @@ const editor = grapesjs.init({
 
     /* ========== MOBILE-RESPONSIVE MOVIE ROW ========== */
     {
-      id: 'netflix-row-mobile',
-      label: 'Movie Row (Mobile)',
+      id: 'netflix-row',
+      label: 'Movie Row',
       category: 'Netflix',
       content: `<section class="netflix-row-mobile mobile-padding" style="padding: 30px 0; background: #141414;">
                   <h2 class="netflix-row-title" style="color: white; font-size: 1.5rem; margin: 0 0 15px 20px; font-weight: 600;">Popular on Netflix</h2>
@@ -327,8 +327,8 @@ const editor = grapesjs.init({
 
     /* ========== MOBILE-RESPONSIVE BILLBOARD ========== */
     {
-      id: 'netflix-billboard-mobile',
-      label: 'Netflix Billboard (Mobile)',
+      id: 'netflix-billboard',
+      label: 'Netflix Billboard',
       category: 'Netflix',
       content: `<section class="netflix-billboard-mobile mobile-padding" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://image.tmdb.org/t/p/original/ggFHVNu6YYI5L9pCfOacjizRGt.jpg'); background-size: cover; background-position: center; color: white; padding: 100px 20px 50px 20px; min-height: 60vh; display: flex; align-items: flex-end;">
                   <div style="max-width: 100%;" class="mobile-text-center">
@@ -348,8 +348,8 @@ const editor = grapesjs.init({
 
     /* ========== MOBILE-RESPONSIVE GRID LAYOUT ========== */
     {
-      id: 'netflix-grid-mobile',
-      label: 'Movie Grid (Mobile)',
+      id: 'netflix-grid',
+      label: 'Movie Grid',
       category: 'Netflix',
       content: `<section class="mobile-padding" style="padding: 30px 0; background: #141414;">
                   <h2 class="mobile-text-center" style="color: white; font-size: 1.5rem; margin: 0 0 20px 0; font-weight: 600;">Trending Now</h2>
@@ -374,8 +374,8 @@ const editor = grapesjs.init({
 
     /* ========== MOBILE-RESPONSIVE FOOTER ========== */
     {
-      id: 'netflix-footer-mobile',
-      label: 'Netflix Footer (Mobile)',
+      id: 'netflix-footer',
+      label: 'Netflix Footer',
       category: 'Netflix',
       content: `<footer class="netflix-footer-mobile" style="background: #141414; color: #808080; padding: 40px 20px; margin-top: 30px;">
                   <div style="max-width: 1000px; margin: 0 auto;">

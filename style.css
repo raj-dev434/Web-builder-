@@ -522,3 +522,161 @@ body, html {
     font-size: 1.8rem !important;
   }
 }
+
+/* ========== LAYOUT STRUCTURE ========== */
+#main-wrapper {
+  display: flex;
+  height: calc(100vh - 60px);
+  margin-top: 60px;
+}
+
+/* ========== LEFT SIDEBAR STYLES ========== */
+.sidebar {
+  width: 300px;
+  background: #2c3e50;
+  color: white;
+  transition: all 0.3s ease;
+  border-right: 2px solid #34495e;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebar.collapsed {
+  width: 50px;
+}
+
+.sidebar-header {
+  padding: 15px 20px;
+  background: #34495e;
+  border-bottom: 1px solid #4a6278;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 60px;
+}
+
+.sidebar-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.sidebar.collapsed .sidebar-header h3 {
+  display: none;
+}
+
+.sidebar-toggle {
+  background: none;
+  border: none;
+  color: #ecf0f1;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+  background: #4a6278;
+}
+
+.sidebar-body {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background: #2c3e50;
+}
+
+.sidebar.collapsed .sidebar-body {
+  display: none;
+}
+
+/* ========== BLOCKS IN SIDEBAR ========== */
+#blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#blocks .gjs-block {
+  margin: 0 !important;
+  background: #34495e !important;
+  border: 1px solid #4a6278 !important;
+  color: #ecf0f1 !important;
+  padding: 12px 15px !important;
+  border-radius: 6px !important;
+  cursor: grab;
+  transition: all 0.3s ease;
+  text-align: left;
+  font-size: 14px;
+}
+
+#blocks .gjs-block:hover {
+  background: #4a6278 !important;
+  border-color: #5d7b9a !important;
+  transform: translateX(5px);
+}
+
+#blocks .gjs-block:active {
+  cursor: grabbing;
+  transform: scale(0.98);
+}
+
+/* Block category styling */
+#blocks .gjs-block[data-category]::before {
+  content: attr(data-category);
+  display: block;
+  font-size: 10px;
+  color: #bdc3c7;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ========== EDITOR AREA ========== */
+#gjs {
+  flex: 1;
+  border: none;
+  background: #ecf0f1;
+}
+
+/* ========== RESPONSIVE SIDEBAR ========== */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 60px;
+    bottom: 0;
+    z-index: 999;
+    transform: translateX(0);
+  }
+  
+  .sidebar.collapsed {
+    transform: translateX(-100%);
+    width: 300px;
+  }
+  
+  #gjs {
+    margin-left: 0;
+  }
+}
+
+/* ========== SCROLLBAR STYLING ========== */
+.sidebar-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-body::-webkit-scrollbar-track {
+  background: #34495e;
+}
+
+.sidebar-body::-webkit-scrollbar-thumb {
+  background: #5d7b9a;
+  border-radius: 3px;
+}
+
+.sidebar-body::-webkit-scrollbar-thumb:hover {
+  background: #6c8cb0;
+}
