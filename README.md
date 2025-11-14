@@ -1,6 +1,6 @@
 ## Description
 
- This is an web builder tools allow user to build static website instantly without any coding  .Users can instantly build an website with drag and drop .
+ This is an web builder tools allow user to build static website instantly without any coding  .Users can instantly build an website with drag and drop . some of the component are only for desktop and working on mobile view 
 ## Features
 This web builder has an other component such as Layout,Media,Element and basic component as well which used to build normal website instantly.
 This web builder has an ability to create static website Ecommerce,Blog,portfolio and marketing related website
